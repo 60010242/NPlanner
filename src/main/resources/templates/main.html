@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>NPlanner</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function openaddtask(){
+		document.getElementById('addtask').style.visibility = 'visible';
+	}
+</script>
+</head>
+<body>
+	Hello world
+	<div id="addtask" style="visibility: hidden;">
+		<iframe style="width: 80%; height: 80%; background-color: lightgreen;" th:src="@{/addTask}"></iframe>
+	</div>
+
+	<button onclick="openaddtask()">add</button>
+
+</body>
+</html>

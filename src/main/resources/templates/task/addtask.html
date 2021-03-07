@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>NPlanner</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<form th:action="@{/saveSchedule}" th:object="${schedule}">
+		date: <input type="date" name="date">
+		time: <input type="time" name="time">
+		<div th:object="${task}">
+			task: <input type="text" name="task_string">
+			description: <input type="text" name="description">
+		</div>
+		<input type="submit" value="add schedule">
+	</form>
+	<table>
+		<tr th:each="schedule: ${schedule_list}">
+    		<td th:text="${schedule.schedule_id}"></td>
+    		<td th:text="${schedule.date}"></td>
+    		<td th:text="${schedule.time}"></td>
+    		<td th:text="${schedule.task_id}"></td>
+    		<td th:for="task: ${task_list}">
+    			<p th:if="task == ${schedule.task_id}" th:text="task.task_string"></p>
+    		</td>
+  		</tr>
+	</table>
+	<!-- 
+	<form th:action="@{/saveTask}" th:object="${task}">
+		task: <input type="text" name="task_string" required>
+		description: <input type="text" name="description">
+		success: <input type="checkbox" name="success">
+		<input type="submit" value="add task">
+	</form>
+	<table>
+		<tr th:each="task: ${task_list}">
+    		<td th:text="${task.task_id}"></td>
+    		<td th:text="${task.task}"></td>
+    		<td th:text="${task.description}"></td>
+    		<td><input type="checkbox" th:checked="${task.success}"></td>
+    		<td><a th:href="@{'/delete/' + ${task.task_id}}">delete</a></td>
+  		</tr>
+	</table> -->
+
+</body>
+</html>
