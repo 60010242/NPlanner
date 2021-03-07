@@ -23,7 +23,7 @@
     		<td th:text="${schedule.date}"></td>
     		<td th:text="${schedule.time}"></td>
     		<td th:text="${schedule.task_id}"></td>
-    		<td th:for="task: ${task_list}">
+    		<td th:each="task: ${task_list}">
     			<p th:if="task == ${schedule.task_id}" th:text="task.task_string"></p>
     		</td>
   		</tr>
